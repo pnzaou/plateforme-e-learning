@@ -37,7 +37,7 @@ const NotFound = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Button asChild size="lg" className="gap-2 gradient-primary text-primary-foreground w-full sm:w-auto">
-            <Link to="/">
+            <Link to="/dashboard">
               <Home className="h-4 w-4" />
               Retour au dashboard
             </Link>

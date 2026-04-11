@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { fetchAdminDashboard } from "@/features/dashboard/dashboard.slice";
 import AdminDashboardSkeleton from "@/components/skeletons/admin-dashboard-skeleton";
 import ErrorState from "@/components/dashboard/shared/error-state";
+import { approuverModuleThunk } from "../../../features/modules/modules.slice";
 
 const iconMap = {
   Users, BookOpen, GraduationCap, TrendingUp,
@@ -22,6 +23,7 @@ function AdminDashboardHome() {
   const data = useSelector((state) => state.dashboard.admin.data);
   const status = useSelector((state) => state.dashboard.admin.status);
   const error = useSelector((state) => state.dashboard.admin.error);
+  console.log(data)
 
   useEffect(() => {
   if (status === "idle") {
@@ -158,6 +160,7 @@ function AdminDashboardHome() {
                   <Button
                     size="sm"
                     className="text-xs h-7 gradient-primary text-primary-foreground"
+                    
                   >
                     Approuver
                   </Button>
