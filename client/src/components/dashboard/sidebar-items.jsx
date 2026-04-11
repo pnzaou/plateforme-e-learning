@@ -90,11 +90,11 @@ const navByRole = {
       label: "Tableau de bord",
       items: [
         { title: "Vue d'ensemble", url: "/dashboard", icon: LayoutDashboard },
-        {
-          title: "Statistiques",
-          url: "/dashboard/admin/stats",
-          icon: BarChart3,
-        },
+        // {
+        //   title: "Statistiques",
+        //   url: "/dashboard/admin/stats",
+        //   icon: BarChart3,
+        // },
       ],
     },
     {
