@@ -12,13 +12,13 @@ const chapitreSchema = new mongoose.Schema(
       default: '',
     },
     module: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Module',
       required: true,
     },
     // Sous-chapitre optionnel (self-reference)
     parentChapitre: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Chapitre',
       default: null,
     },
@@ -48,4 +48,4 @@ chapitreSchema.virtual('contenus', {
 
 chapitreSchema.index({ module: 1, ordre: 1 });
 
-export default mongoose.model('Chapitre', chapitreSchema);
+module.exports = mongoose.model('Chapitre', chapitreSchema);

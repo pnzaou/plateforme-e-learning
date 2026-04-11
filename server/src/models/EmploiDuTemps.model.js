@@ -3,22 +3,22 @@ const mongoose = require("mongoose");
 const emploiDuTempsSchema = new mongoose.Schema(
   {
     module: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Module',
       required: true,
     },
     enseignant: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
     classe: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Classe',
       required: true,
     },
     salle: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Salle',
       required: true,
     },
@@ -37,7 +37,7 @@ const emploiDuTempsSchema = new mongoose.Schema(
     },
     // Qui a créé/modifié ce créneau (admin ou chef de dép)
     creePar: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
@@ -66,4 +66,4 @@ emploiDuTempsSchema.pre('save', function (next) {
   next();
 });
 
-export default mongoose.model('EmploiDuTemps', emploiDuTempsSchema);
+module.exports = mongoose.model('EmploiDuTemps', emploiDuTempsSchema);

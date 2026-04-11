@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const soumissionSchema = new mongoose.Schema(
   {
     devoir: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Devoir',
       required: true,
     },
     etudiant: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
@@ -49,7 +49,7 @@ const soumissionSchema = new mongoose.Schema(
       default: null,
     },
     corrigePar: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       default: null,
     },
@@ -64,4 +64,4 @@ const soumissionSchema = new mongoose.Schema(
 // Un étudiant ne peut soumettre qu'une fois par devoir
 soumissionSchema.index({ devoir: 1, etudiant: 1 }, { unique: true });
 
-export default mongoose.model('Soumission', soumissionSchema);
+module.exports = mongoose.model('Soumission', soumissionSchema);

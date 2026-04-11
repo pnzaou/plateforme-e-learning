@@ -31,7 +31,7 @@ const questionSchema = new mongoose.Schema(
   { _id: true }
 );
 
-const quizSchema = new Schema(
+const quizSchema = new mongoose.Schema(
   {
     titre: {
       type: String,
@@ -43,17 +43,17 @@ const quizSchema = new Schema(
       default: '',
     },
     module: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Module',
       required: true,
     },
     classe: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Classe',
       required: true,
     },
     enseignant: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
@@ -92,4 +92,4 @@ const quizSchema = new Schema(
 
 quizSchema.index({ module: 1, classe: 1 });
 
-export default mongoose.model('Quiz', quizSchema);
+module.exports = mongoose.model('Quiz', quizSchema);

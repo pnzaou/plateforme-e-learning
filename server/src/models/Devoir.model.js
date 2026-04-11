@@ -16,17 +16,17 @@ const devoirSchema = new mongoose.Schema(
       default: '',
     },
     module: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Module',
       required: true,
     },
     classe: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Classe',
       required: true,
     },
     enseignant: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
@@ -70,4 +70,4 @@ const devoirSchema = new mongoose.Schema(
 devoirSchema.index({ module: 1, classe: 1 });
 devoirSchema.index({ enseignant: 1, type: 1 });
 
-export default mongoose.model('Devoir', devoirSchema);
+module.exports = mongoose.model('Devoir', devoirSchema);

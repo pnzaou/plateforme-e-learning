@@ -17,7 +17,7 @@ const salleSchema = new mongoose.Schema(
       required: true,
     },
     etablissement: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Etablissement',
       required: true,
     },
@@ -31,4 +31,4 @@ const salleSchema = new mongoose.Schema(
 
 salleSchema.index({ etablissement: 1, nom: 1 }, { unique: true });
 
-export default mongoose.model('Salle', salleSchema);
+module.exports = mongoose.model('Salle', salleSchema);

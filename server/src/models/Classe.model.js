@@ -8,7 +8,7 @@ const classeSchema = new mongoose.Schema(
       trim: true,
     },
     niveau: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Niveau',
       required: true,
     },
@@ -37,4 +37,4 @@ classeSchema.virtual('etudiants', {
 
 classeSchema.index({ niveau: 1, anneeScolaire: 1, nom: 1 }, { unique: true });
 
-export default mongoose.model('Classe', classeSchema);
+module.exports = mongoose.model('Classe', classeSchema);

@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-const STATUTS = ['brouillon', 'en_revision', 'publie', 'archive'];
+const STATUTS = ["brouillon", "en_revision", "publie", "archive"];
 
 const moduleSchema = new mongoose.Schema(
   {
     titre: {
       type: String,
-      required: [true, 'Le titre est obligatoire'],
+      required: [true, "Le titre est obligatoire"],
       trim: true,
     },
     code: {
@@ -17,16 +17,16 @@ const moduleSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      default: '',
+      default: "",
     },
     niveau: {
-      type: Schema.Types.ObjectId,
-      ref: 'Niveau',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Niveau",
       required: true,
     },
     enseignant: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
     // Coefficient du module pour le calcul de la moyenne
@@ -38,7 +38,7 @@ const moduleSchema = new mongoose.Schema(
     statut: {
       type: String,
       enum: STATUTS,
-      default: 'brouillon',
+      default: "brouillon",
     },
     image: {
       type: String,
@@ -46,25 +46,32 @@ const moduleSchema = new mongoose.Schema(
     },
     // L'admin ou chef de dep approuve le contenu
     approuvePar: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       default: null,
     },
     approuveAt: {
       type: Date,
       default: null,
     },
+    motifRejet: { type: String, default: null },
+    rejeteePar: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null,
+    },
+    rejeteeAt: { type: Date, default: null },
   },
-  { timestamps: true, toJSON: { virtuals: true } }
+  { timestamps: true, toJSON: { virtuals: true } },
 );
 
-moduleSchema.virtual('chapitres', {
-  ref: 'Chapitre',
-  localField: '_id',
-  foreignField: 'module',
+moduleSchema.virtual("chapitres", {
+  ref: "Chapitre",
+  localField: "_id",
+  foreignField: "module",
 });
 
 moduleSchema.index({ niveau: 1, code: 1 }, { unique: true });
 moduleSchema.index({ enseignant: 1, statut: 1 });
 
-export default mongoose.model('Module', moduleSchema);
+module.exports = mongoose.model("Module", moduleSchema);

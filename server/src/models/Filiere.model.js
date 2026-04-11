@@ -18,7 +18,7 @@ const filiereSchema = new mongoose.Schema(
       default: '',
     },
     departement: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Departement',
       required: true,
     },
@@ -38,4 +38,4 @@ filiereSchema.virtual('niveaux', {
 
 filiereSchema.index({ departement: 1, code: 1 }, { unique: true });
 
-export default mongoose.model('Filiere', filiereSchema);
+module.exports = mongoose.model('Filiere', filiereSchema);

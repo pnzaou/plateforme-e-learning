@@ -3,17 +3,17 @@ const mongoose = require("mongoose");
 const noteSchema = new mongoose.Schema(
   {
     etudiant: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
     module: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Module',
       required: true,
     },
     classe: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Classe',
       required: true,
     },
@@ -77,4 +77,4 @@ noteSchema.pre('save', function (next) {
   next();
 });
 
-export default mongoose.model('Note', noteSchema);
+module.exports = mongoose.model('Note', noteSchema);
