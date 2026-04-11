@@ -34,4 +34,4 @@ etablissementSchema.virtual('salles', {
   foreignField: 'etablissement',
 });
 
-export default mongoose.model('Etablissement', etablissementSchema);
+module.exports = mongoose.model('Etablissement', etablissementSchema);

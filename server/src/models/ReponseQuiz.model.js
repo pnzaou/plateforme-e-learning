@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const reponseItemSchema = new mongoose.Schema(
   {
-    questionId: { type: Schema.Types.ObjectId, required: true },
+    questionId: { type: mongoose.Schema.Types.ObjectId, required: true },
     reponsesChoisies: [String], // index ou texte des options sélectionnées
     reponseTexte: { type: String, default: null }, // pour reponse_courte
     estCorrecte: { type: Boolean, default: false },
@@ -11,15 +11,15 @@ const reponseItemSchema = new mongoose.Schema(
   { _id: false }
 );
 
-const reponseQuizSchema = new Schema(
+const reponseQuizSchema = new mongoose.Schema(
   {
     quiz: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Quiz',
       required: true,
     },
     etudiant: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
@@ -63,4 +63,4 @@ const reponseQuizSchema = new Schema(
 
 reponseQuizSchema.index({ quiz: 1, etudiant: 1, tentativeNumero: 1 });
 
-export default mongoose.model('ReponseQuiz', reponseQuizSchema);
+module.exports = mongoose.model('ReponseQuiz', reponseQuizSchema);

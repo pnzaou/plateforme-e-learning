@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const TYPES = ['texte', 'video', 'image', 'pdf', 'audio', 'lien'];
+const TYPES = ["texte", "video", "image", "pdf", "audio", "lien"];
 
 const contenuSchema = new mongoose.Schema(
   {
@@ -11,12 +11,12 @@ const contenuSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: { values: TYPES, message: 'Type de contenu invalide' },
+      enum: { values: TYPES, message: "Type de contenu invalide" },
       required: true,
     },
     chapitre: {
-      type: Schema.Types.ObjectId,
-      ref: 'Chapitre',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Chapitre",
       required: true,
     },
     ordre: {
@@ -48,10 +48,14 @@ const contenuSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    cloudinaryPublicId: {
+      type: String,
+      default: null,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 contenuSchema.index({ chapitre: 1, ordre: 1 });
 
-export default mongoose.model('Contenu', contenuSchema);
+module.exports = mongoose.model("Contenu", contenuSchema);

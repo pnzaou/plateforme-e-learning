@@ -20,7 +20,7 @@ const departementSchema = new mongoose.Schema(
       default: '',
     },
     chefDepartement: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       default: null,
     },
@@ -38,4 +38,4 @@ departementSchema.virtual('filieres', {
   foreignField: 'departement',
 });
 
-export default mongoose.model('Departement', departementSchema);
+module.exports = mongoose.model('Departement', departementSchema);

@@ -3,26 +3,26 @@ const mongoose = require("mongoose");
 const progressionSchema = new mongoose.Schema(
   {
     etudiant: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
     module: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Module',
       required: true,
     },
     // IDs des contenus consultés
     contenusVus: [
       {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Contenu',
       },
     ],
     // IDs des chapitres terminés
     chapitresTermines: [
       {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Chapitre',
       },
     ],
@@ -64,4 +64,4 @@ progressionSchema.pre('save', async function (next) {
   }
 });
 
-export default mongoose.model('Progression', progressionSchema);
+module.exports = mongoose.model('Progression', progressionSchema);

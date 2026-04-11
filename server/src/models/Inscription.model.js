@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const inscriptionSchema = new mongoose.Schema(
   {
     etudiant: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
     classe: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Classe',
       required: true,
     },
@@ -26,7 +26,7 @@ const inscriptionSchema = new mongoose.Schema(
       default: 'en_attente',
     },
     validePar: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       default: null,
     },
@@ -44,4 +44,4 @@ inscriptionSchema.index(
   { unique: true }
 );
 
-export default mongoose.model('Inscription', inscriptionSchema);
+module.exports = mongoose.model('Inscription', inscriptionSchema);

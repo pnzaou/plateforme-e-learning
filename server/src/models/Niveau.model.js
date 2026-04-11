@@ -15,7 +15,7 @@ const niveauSchema = new mongoose.Schema(
       trim: true,
     },
     filiere: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Filiere',
       required: true,
     },
@@ -29,4 +29,4 @@ const niveauSchema = new mongoose.Schema(
 
 niveauSchema.index({ filiere: 1, code: 1 }, { unique: true });
 
-export default mongoose.model('Niveau', niveauSchema);
+module.exports = mongoose.model('Niveau', niveauSchema);
